@@ -1,0 +1,162 @@
+ 
+Java 7
+
+ 
+1
+import ?;
+3
+class Node{
+4
+    int data;
+5
+    Node next;
+6
+    Node(int d){
+7
+        data=d;
+8
+        next=null;
+9
+    }
+10
+    
+11
+}
+12
+class Solution
+13
+{
+ 
+14
+    public static Node removeDuplicates(Node head) {
+15
+      //Write your code here
+16
+    // if head is null or list only has 1 element
+17
+    if( head == null || head.next == null){
+18
+        return head;
+19
+    }
+20
+?
+21
+    // if list is more than 2 elements
+22
+    Node current = head.next;
+23
+    Node previous = head;
+24
+    while( current != null ){
+25
+        // If current is a duplicate of previous
+26
+        if( previous.data == current.data ){
+27
+            // set previous' next pointer to skip over current node
+28
+            previous.next = current.next;
+29
+            // set current to next node in list, previous should not move
+30
+            current = current.next;
+31
+        }
+32
+        else{ // node is not duplicate of previous
+33
+            previous = current;
+34
+            current = current.next;
+35
+        }
+36
+    }
+37
+    return head;
+38
+?
+39
+   }
+ 
+40
+    public static  Node insert(Node head,int data)
+41
+    {
+42
+        Node p=new Node(data);          
+43
+        if(head==null)
+44
+            head=p;
+45
+        else if(head.next==null)
+46
+            head.next=p;
+47
+        else
+48
+        {
+49
+            Node start=head;
+50
+            while(start.next!=null)
+51
+                start=start.next;
+52
+            start.next=p;
+53
+?
+54
+        }
+55
+        return head;
+56
+    }
+57
+    public static void display(Node head)
+58
+        {
+59
+              Node start=head;
+60
+              while(start!=null)
+61
+              {
+62
+                  System.out.print(start.data+" ");
+63
+                  start=start.next;
+64
+              }
+65
+        }
+66
+        public static void main(String args[])
+67
+        {
+68
+              Scanner sc=new Scanner(System.in);
+69
+              Node head=null;
+70
+              int T=sc.nextInt();
+71
+              while(T-->0){
+72
+                  int ele=sc.nextInt();
+73
+                  head=insert(head,ele);
+74
+              }
+75
+              head=removeDuplicates(head);
+76
+              display(head);
+77
+?
+78
+       }
+79
+    }
