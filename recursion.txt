@@ -11,6 +11,9 @@ public class Solution {
         return (n > 1) ? n * factorial(n - 1) : 1;
     }
     
+
+
+//sudarshan
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
         int n = scan.nextInt();
